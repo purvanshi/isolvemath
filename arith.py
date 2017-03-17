@@ -16,6 +16,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
+import pickle
 
 def read(name):
 	train = pd.read_csv(name, header=0)
@@ -40,17 +41,17 @@ def bag_of_words(name):
                              preprocessor = None, \
                              stop_words = None,   \
                              max_features = 5000) 
-	vect = TfidfVectorizer(sublinear_tf=True, max_df=0.5, analyzer='word', 
-           stop_words=None)
-	a=vect.fit_transform(name)
+	#vect = TfidfVectorizer(sublinear_tnope
+	#f=True, max_df=0.5, analyzer='word', 
+    #       stop_words=None)
+	#a=vect.fit_transform(name)
 	#corpus_tf_idf = vect.transform(name) 
 	#train_data_features = vectorizer.fit_transform(name[i])
-	#train_data_features= map(vectorizer.fit_transform,name)
+	train_data_features= map(vectorizer.fit_transform,name)
 	#train_data_features = train_data_features.toarray()
 	#train_data_features=np.fromiter(train_data_features, dtype=np.int)
 	#print(train_data_features)
-	print("hey")
-	return(a)
+	return(train_data_features)
 
 def letters_only(name):	
 	final=[]
@@ -58,6 +59,20 @@ def letters_only(name):
 		letters_only = re.sub("[^a-zA-Z]", " ", name["questions"][i])
 		final.append(letters_only)
 	return final
+
+def hey(name):
+	vectorizer = CountVectorizer(analyzer = "word",   \
+                             tokenizer = None,\
+                             preprocessor = None, \
+                             stop_words = None,   \
+                             max_features = 5000) 
+
+	vocab = vectorizer.get_feature_names()
+	print(vocab)
+	dist = np.sum(name, axis=0)
+	for tag, count in zip(vocab, dist):
+		print(tag)
+		print(count)
 
 
 
@@ -95,9 +110,10 @@ values = ','.join(str(v) for v in final)
 print(values)
 print("after dst cleaning")
 
-feature_ds=bag_of_words(ds)
-feature_unit=bag_of_words(unit)
-
+feature_ds=np.array(list(bag_of_words(ds)))
+feature_unit=np.array(list(bag_of_words(unit)))
+	
 print(feature_ds.shape)
-print(feature_unit)
+
+hey(feature_ds)
 
