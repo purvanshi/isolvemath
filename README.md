@@ -1,28 +1,28 @@
-iSolveMath
+## iSolveMath###
+
+
 **********
 
 **iSolveMath solves and visualizes Math Word Problems (MWPs).**
 
-
-.. contents:: *Contents of this document*
-   :depth: 2
-
-Introduction
+**Introduction**
 =============
 
 iSolveMath is a platform where a student can enter a maths word problem, get an automatic answer and visual explanation generated of both the question and the answer.
 
-Inspiration
+
+**Inspiration**
 ===========
 A student begins to solve Word Problems in the second grade, and these problems continue till the end of high school. Most students are unable to visualise such problems, and rely on rote learning instead.Finally developing a hatered towards the subject. 
 
-Approach
+
+**Approach**
 ========
 The system at present solves starightforward simple interest problems like-
 
-1.How much time will it take for an amount of $900 to yield $81 as interest at 4.5% per annum of simple interest?
-2.If Manohar pays an interest of $750 for 2 years on a sum of $4,500, find the rate of interest.
-3.Sahil took a loan for 6 years at the rate of 5% per annum on Simple Interest, If the total interest paid was $1230, Find the principal.
+- How much time will it take for an amount of $900 to yield $81 as interest at 4.5% per annum of simple interest?
+- If Manohar pays an interest of $750 for 2 years on a sum of $4,500, find the rate of interest.
+- Sahil took a loan for 6 years at the rate of 5% per annum on Simple Interest, If the total interest paid was $1230, Find the principal.
 
 The process takes place as follows-
 - Finding the question part and classifying into what is unknown.
@@ -32,19 +32,23 @@ Each basic word problem can be classified into subcategories. For example, SI pr
   
   1. Finding a quantity when three others are given. 
   2. Investment of parts (example - splitting investment into two parts, and finding the cumulative interest after a year). This also includes profit sharing.
+  
 
-Current Work and research
+**Current Work and research**
 =========================
 The code at present is highly domain specific. To make it more generic, we have decided to solve word problems from basic. At present we are working on 4 basic operation problems(single and multistep). For better accuracies we will use deep neural networks to train our data.
 
-Who can contribute
+
+**Who can contribute**
 ==================
--Researchers - People who want to challenge the current accuracies of present maths word problem solvers, or extend the research in this field to higher level and complex problems and who love to play with the language(natural language processing).
--Developers - We beleieve in building something which can be used by someone directly. Bridging the gap between research and develepment work, iSolveMath is a platform which involves both development and research work.
--ANYONE WHO LOVES MATHS AND BELIEVES EVERYONE ELSE SHOULD LOVE IT TOO.
+- Researchers - People who want to challenge the current accuracies of present maths word problem solvers, or extend the research in this field to higher level and complex problems and who love to play with the language(natural language processing).
+
+- Developers - We beleieve in building something which can be used by someone directly. Bridging the gap between research and develepment work, iSolveMath is a platform which involves both development and research work.
+
+- _ANYONE WHO LOVES MATHS AND BELIEVES EVERYONE ELSE SHOULD LOVE IT TOO._
 
 
-Alternatives currently available in maths word problem solving
+**Alternatives currently available in maths word problem solving**
 ==============================================================
 
 The following alternatives already exist, but they perform to a limited capacity:
