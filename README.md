@@ -18,7 +18,11 @@ sudo apt install python3-dev
 sudo apt-get install build-essential autoconf libtool pkg-config python-pyrex  idle-python2.7 qt4-dev-tools qt4-designer libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus  python-dev
 
 pip install -r requirements.txt
-python -m spacy download en
+python3 -m spacy download en
+
+python3
+>>>import nltk
+>>>nltk.download('all')
 
 
 RUN USING 
