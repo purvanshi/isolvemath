@@ -3,12 +3,26 @@
 
 **********
 
+
 **iSolveMath solves and visualizes Math Word Problems (MWPs).**
 
 **Introduction**
 =============
 
 iSolveMath is a platform where a student can enter a maths word problem, get an automatic answer and visual explanation generated of both the question and the answer.
+
+**Installation**
+=============
+
+sudo apt install python3-dev
+sudo apt-get install build-essential autoconf libtool pkg-config python-pyrex  idle-python2.7 qt4-dev-tools qt4-designer libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus  python-dev
+
+pip install -r requirements.txt
+python -m spacy download en
+
+
+RUN USING 
+gunicorn -b 0.0.0.0:5000 main:app —reload
 
 
 **Inspiration**
