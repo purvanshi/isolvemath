@@ -15,10 +15,10 @@ def oneMoney(dep,doc,pattern,unknown,rate,time):
 				com1=common_functions.clean(triple[2][0])
 				if(com==pq or com1==pq):
 					money=pq
-					q_dep.append(triple)	
+					q_dep.append(triple)
 	q_dep = str(q_dep)
-	
-	#Matching with the closest pattern and classifying money as SI, principal or amount	
+
+	#Matching with the closest pattern and classifying money as SI, principal or amount
 	for i in range(len(pattern)):
 		m=common_functions.SequenceMatcher(None,pattern["pattern"][i],q_dep)
 		q=m.ratio()
@@ -32,10 +32,10 @@ def oneMoney(dep,doc,pattern,unknown,rate,time):
 	if(answer=="p" and (unknown==3 or unknown==5)):
 		principal=money
 		principal=common_functions.isfloat(principal)
-		
+
 	elif(answer=="si" and unknown==2 or unknown==5):
 		interest=money
-		interest=common_functions.isfloat(interest)	
+		interest=common_functions.isfloat(interest)
 
 	elif(answer=="p" and unknown==2):
 		interest=money
@@ -56,6 +56,8 @@ def oneMoney(dep,doc,pattern,unknown,rate,time):
 		unknown=3
 
 	if(unknown==2):
+		print("principal=")
+
 		answer=SIformula.find_principal(rate,interest,time)
 		print(answer)
 	elif(unknown==3):
@@ -63,6 +65,7 @@ def oneMoney(dep,doc,pattern,unknown,rate,time):
 		print(answer)
 	elif(unknown==5):
 		if(principal==0):
+			print("principal=")
 			prin=SIformula.find_principal(rate,interest,time)
 			answer=SIformula.find_amt(interest,prin)
 			print(answer)
@@ -70,7 +73,7 @@ def oneMoney(dep,doc,pattern,unknown,rate,time):
 			interest=SIformula.find_si(principal,rate,time)
 			answer=SIformula.find_amt(interest,principal)
 			print(answer)
-
+	return answer
 
 def moreMoney(dep,doc,pattern,unknown,rate,time):
 	q_dep=[]
@@ -89,14 +92,14 @@ def moreMoney(dep,doc,pattern,unknown,rate,time):
 				if(com==pq or com1==pq):
 					money=pq
 					q_dep.append(triple)
-			q_dep = str(q_dep)	
+			q_dep = str(q_dep)
 			for i in range(len(pattern)):
 				m=SequenceMatcher(None,pattern["pattern"][i],q_dep)
 				q=m.ratio()
 				ratios.append(q)
 			mx=max(ratios)
 			ino=ratios.index(mx)
-			answer=pattern["tag"][ino]			
+			answer=pattern["tag"][ino]
 			print(answer,unknown)
 
 			if(answer=="a" and unknown!=5 and amount==0):
@@ -162,7 +165,7 @@ def moreMoney(dep,doc,pattern,unknown,rate,time):
 					if(q or w and interest==0):
 						interest=money
 						interest=common_functions.isfloat(interest)
-					else:	
+					else:
 						amount=money
 						amount=common_functions.isfloat(amount)
 
@@ -194,3 +197,4 @@ def moreMoney(dep,doc,pattern,unknown,rate,time):
 			principal=amount-interest
 			answer=SIformula.find_rate(principal,time,interest)
 			print(answer)
+	return answer

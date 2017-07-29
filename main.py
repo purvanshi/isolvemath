@@ -28,6 +28,8 @@ class Starting(object):
     def on_post(self,req,resp):
         print("get it")
         data=req.stream.read()
+        print(str(data))
+        print("get it")
         data=data.decode()
         data=urllib.parse.unquote(data)
         data=urllib.parse.parse_qs(data)

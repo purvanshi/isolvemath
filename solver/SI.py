@@ -69,9 +69,10 @@ def find(question,name):
 			p=1
 			return 5
 	if(p==0):
-		return 4      
+		return 4
 
 def main(input_question):
+	print(input_question)
 	pattern=common_functions.read("Data/pattern.csv")
 	question=input_question
 	tagged_question=common_functions.pos_tagger.tag(common_functions.nltk.word_tokenize(question))
@@ -89,7 +90,7 @@ def main(input_question):
 	    	frate=ent.text
 	    	rate=common_functions.clean(frate)
 	    	print(rate)
-	    	rate=common_functions.isfloat(rate) 		
+	    	rate=common_functions.isfloat(rate)
 	    elif(ent.label_=="DATE"  and time==0):
 	    	t=ent.text
 	    	time=common_functions.clean(t)
@@ -103,11 +104,13 @@ def main(input_question):
 	loops=p
 	dependency = result.__next__()
 	if (p==1):
-		findAnswer_SI.oneMoney(dependency,doc,pattern,unknown,rate,time)
+		print("abc1")
+		print(findAnswer_SI.oneMoney(dependency,doc,pattern,unknown,rate,time))
+		print("abc2")
+		return str(findAnswer_SI.oneMoney(dependency,doc,pattern,unknown,rate,time))
 		
 	elif(p>1):
-		findAnswer_SI.moreMoney(dependency,doc,pattern,unknown,rate,time)
+		print(findAnswer_SI.moreMoney(dependency,doc,pattern,unknown,rate,time))
+	return str(findAnswer_SI.moreMoney(dependency,doc,pattern,unknown,rate,time))
 		
 print("enter question")
-a=input()
-main(a)

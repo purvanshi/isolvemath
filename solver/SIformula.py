@@ -9,7 +9,6 @@ def find_principal(rate,interest,time):
 	q=(rate*time)
 	q=float(q)
 	n=p/q
-	print("principal=")
 	return n
 
 def find_si(p,r,t):
