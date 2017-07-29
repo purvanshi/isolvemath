@@ -45,11 +45,10 @@ def traindata():
 		    	if(triple[0][0]==ent.text or triple[2][0]==ent.text and ent.label_=="MONEY"):
 		    		print(triple[1],"(",triple[0][0],", ",triple[2][0],")")
 		    		training.append(triple)
-	
 	for i in training:
 		print(i)
 	w, h = len(si)*2,2;
-	Matrix = [[0 for x in range(w)] for y in range(h)] 
+	Matrix = [[0 for x in range(w)] for y in range(h)]
 	print(len(Matrix))
 	for i in range(len(si)):
 		p=-1

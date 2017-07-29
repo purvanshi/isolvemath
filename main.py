@@ -6,7 +6,7 @@ import urllib
 import html
 #from BeautifulSoup import BeautifulSoup
 
-sys.path.insert(0, '/home/puru/Documents/d/arithmetic/code/api/solver')
+sys.path.insert(0, 'solver')
 import SI
 
 class ThingsResource(object):
@@ -37,7 +37,7 @@ class Starting(object):
         print(answer)
         d={}
         d["answer"]=answer
-              
+
         resp.body = json.dumps(d, ensure_ascii=False)
         resp.status = falcon.HTTP_200
 
@@ -45,8 +45,8 @@ class Starting(object):
         #print(html_decoded_string)
         #da.read()
         #print(da)
-        
-        
+
+
 
 	#def on_post(self,req,resp):
     #    print(req.stream)
