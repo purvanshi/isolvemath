@@ -11,16 +11,15 @@ import spacy
 from sklearn import svm
 from sklearn import preprocessing
 from difflib import SequenceMatcher
-import editdistance
 import re
 
 
-jar = '/home/puru/Documents/d/arithmetic/code/api/libs/stanford-postagger-2016-10-31/stanford-postagger.jar'
-model = '/home/puru/Documents/d/arithmetic/code/api/libs/stanford-postagger-2016-10-31/models/english-left3words-distsim.tagger'
+jar = 'libs/stanford-postagger-full/stanford-postagger.jar'
+model = 'libs/stanford-postagger-full/models/english-left3words-distsim.tagger'
 pos_tagger = StanfordPOSTagger(model, jar, encoding='utf8')
 
-path_to_jar = '/home/puru/Documents/d/arithmetic/code/api/libs/stanford-parser-full-2015-04-20/stanford-parser.jar'
-path_to_models_jar = '/home/puru/Documents/d/arithmetic/code/api/libs/stanford-parser-full-2015-04-20/stanford-parser-3.5.2-models.jar'
+path_to_jar = 'libs/stanford-parser-full/stanford-parser.jar'
+path_to_models_jar = 'libs/stanford-parser-full/stanford-parser-3.8.0-models.jar'
 dependency_parser = StanfordDependencyParser(path_to_jar=path_to_jar, path_to_models_jar=path_to_models_jar)
 nlp = spacy.load('en')
 

@@ -72,7 +72,7 @@ def find(question,name):
 		return 4      
 
 def main(input_question):
-	pattern=common_functions.read("/home/puru/Documents/d/arithmetic/code/api/dataset/pattern.csv")
+	pattern=common_functions.read("../Data/pattern.csv")
 	question=input_question
 	tagged_question=common_functions.pos_tagger.tag(common_functions.nltk.word_tokenize(question))
 	result = common_functions.dependency_parser.raw_parse(question)
