@@ -4,6 +4,8 @@ import sys
 import codecs
 import urllib
 import html
+import time
+
 #from BeautifulSoup import BeautifulSoup
 
 sys.path.insert(0, 'solver')
@@ -26,6 +28,7 @@ class Starting(object):
 	#	print("p")
 
     def on_post(self,req,resp):
+        t0 = time.time()
         print("called\n\n")
         data=req.stream.read()
         print(data)
@@ -46,20 +49,10 @@ class Starting(object):
 
         resp.body = json.dumps(d, ensure_ascii=False)
         resp.status = falcon.HTTP_200
-
-        #html_decoded_string = BeautifulSoup(data, convertEntities=BeautifulSoup.HTML_ENTITIES)
-        #print(html_decoded_string)
-        #da.read()
-        #print(da)
-
-
-
-	#def on_post(self,req,resp):
-    #    print(req.stream)
-		#reader = codecs.getreader("utf-8")
-		#obj = json.loads(reader(req.stream))
-		#resp.status = falcon.HTTP_201
-        #resp.location = '/things/' + name
+        t1 = time.time()
+        total = t1-t0
+        print("\n\n\n\n time taken")
+        print(total)
 app = falcon.API()
 things = ThingsResource()
 thi = Starting()
