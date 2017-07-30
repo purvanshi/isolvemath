@@ -113,4 +113,4 @@ def main(input_question):
 		print(findAnswer_SI.moreMoney(dependency,doc,pattern,unknown,rate,time))
 	return str(findAnswer_SI.moreMoney(dependency,doc,pattern,unknown,rate,time))
 		
-print("enter question")
+print("App is running")

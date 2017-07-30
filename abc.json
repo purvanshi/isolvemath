@@ -1,0 +1,69 @@
+{
+    "id": "808f4700-8e75-4f1a-a83c-29e36837d191",
+    "timestamp": "2017-07-30T00:35:34.716Z",
+    "lang": "en",
+    "result": {
+        "source": "agent",
+        "resolvedQuery": "a",
+        "speech": "",
+        "action": "input.unknown",
+        "actionIncomplete": false,
+        "parameters": {},
+        "contexts": [],
+        "metadata": {
+            "intentId": "d1bcb654-ffca-4b38-8ddb-b3a3d2acc9e1",
+            "webhookUsed": "true",
+            "webhookForSlotFillingUsed": "true",
+            "intentName": "Default Fallback Intent"
+        },
+        "fulfillment": {
+            "speech": "One more time?",
+            "messages": [{
+                "type": 0,
+                "speech": "Can you say that again?"
+            }]
+        },
+        "score": 1.0
+    },
+    "status": {
+        "code": 200,
+        "errorType": "success"
+    },
+    "sessionId": "b84d850f-8dc9-2b80-74e7-0403379dd479"
+}
+
+
+{
+    'lang': 'en',
+    'timestamp': '2017-07-30T00:38:24.564Z',
+    'result': {
+        'actionIncomplete': False,
+        'metadata': {
+            'intentId': 'd1bcb654-ffca-4b38-8ddb-b3a3d2acc9e1',
+            'webhookForSlotFillingUsed': 'true',
+            'intentName': 'Default Fallback Intent',
+            'webhookUsed': 'true'
+        },
+        'score': 1.0,
+        'source': 'agent',
+        'parameters': {},
+        'speech': '',
+        'contexts': [],
+        'fulfillment': {
+            'speech': 'I missed what you said. Say it again?',
+            'messages': [{
+                'speech': "Sorry,
+                I didn 't get that.",
+                'type': 0
+            }]
+        },
+        'action': 'input.unknown',
+        'resolvedQuery': 'a'
+    },
+    'id': 'f961ead0-4928-4b6b-b820-51a065cffa98',
+    'status': {
+        'errorType': 'success',
+        'code': 200
+    },
+    'sessionId': 'b84d850f-8dc9-2b80-74e7-0403379dd479'
+}

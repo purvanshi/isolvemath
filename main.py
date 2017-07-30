@@ -26,18 +26,22 @@ class Starting(object):
 	#	print("p")
 
     def on_post(self,req,resp):
-        print("get it")
+        print("called\n\n")
         data=req.stream.read()
-        print(str(data))
-        print("get it")
+        print(data)
+        print("\n\n\nnow printing resolved \n\n")
         data=data.decode()
-        data=urllib.parse.unquote(data)
-        data=urllib.parse.parse_qs(data)
-        print(data["question"][0])
-        answer=SI.main(data["question"][0])
+        
+        data=json.loads(data)
+
+        print(data["result"]["resolvedQuery"])
+        answer=SI.mainp(data["result"]["resolvedQuery"])
         answer=str(answer)
         print(answer)
         d={}
+        d["type"]=0
+        d["siaplayText"]="The answer is "+str(answer)
+        d["speech"]="The answer is "+str(answer)
         d["answer"]=answer
 
         resp.body = json.dumps(d, ensure_ascii=False)
@@ -56,9 +60,6 @@ class Starting(object):
 		#obj = json.loads(reader(req.stream))
 		#resp.status = falcon.HTTP_201
         #resp.location = '/things/' + name
-		
-
-        
 app = falcon.API()
 things = ThingsResource()
 thi = Starting()
