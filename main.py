@@ -1,61 +1,74 @@
-import falcon
 import json
-import sys
-import codecs
-import urllib
-import html
+import requests
 import time
+import urllib
+import sys
 
-#from BeautifulSoup import BeautifulSoup
 
 sys.path.insert(0, 'solver')
 import SI
 
-class ThingsResource(object):
-    def on_get(self, req, resp,filename):
-        """Handles GET requests"""
-        resp.status = falcon.HTTP_200
-        resp.content_type = 'text/html'
-        with open(filename, 'r') as f:
-            resp.body = f.read()
+TOKEN = "441560082:AAEIdBz5_y0gfY-DgAbJ2TuJbWy3EVZeN9c"
+URL = "https://api.telegram.org/bot{}/".format(TOKEN)
 
-class Starting(object):
-	#def on_get(self, req, resp):
-	#	p = ('\nTwo things awe me most, the starry sky '
-    #                 'above me and the moral law within me.\n'
-    #                 '\n'
-    #                 '    ~ Immanuel Kant\n\n')
-	#	print("p")
 
-    def on_post(self,req,resp):
-        t0 = time.time()
-        print("called\n\n")
-        data=req.stream.read()
-        print(data)
-        print("\n\n\nnow printing resolved \n\n")
-        data=data.decode()
-        
-        data=json.loads(data)
+def get_url(url):
+    response = requests.get(url)
+    content = response.content.decode("utf8")
+    return content
 
-        print(data["result"]["resolvedQuery"])
-        answer=SI.mainp(data["result"]["resolvedQuery"])
-        answer=str(answer)
-        print(answer)
-        d={}
-        d["type"]=0
-        d["siaplayText"]="The answer is "+str(answer)
-        d["speech"]="The answer is "+str(answer)
-        d["answer"]=answer
 
-        resp.body = json.dumps(d, ensure_ascii=False)
-        resp.status = falcon.HTTP_200
-        t1 = time.time()
-        total = t1-t0
-        print("\n\n\n\n time taken")
-        print(total)
-app = falcon.API()
-things = ThingsResource()
-thi = Starting()
+def get_json_from_url(url):
+    content = get_url(url)
+    js = json.loads(content)
+    return js
 
-app.add_route('/things/{filename}', things)
-app.add_route('/things',thi)
+
+def get_updates(offset=None):
+    url = URL + "getUpdates"
+    if offset:
+        url += "?offset={}".format(offset)
+    js = get_json_from_url(url)
+    return js
+
+
+def get_last_update_id(updates):
+    update_ids = []
+    for update in updates["result"]:
+        update_ids.append(int(update["update_id"]))
+    return max(update_ids)
+
+
+def echo_all(updates):
+    for update in updates["result"]:
+        text = SI.mainp(update["message"]["text"])
+        chat = update["message"]["chat"]["id"]
+        send_message(text, chat)
+
+
+def get_last_chat_id_and_text(updates):
+    num_updates = len(updates["result"])
+    last_update = num_updates - 1
+    text = updates["result"][last_update]["message"]["text"]
+    chat_id = updates["result"][last_update]["message"]["chat"]["id"]
+    return (text, chat_id)
+
+
+def send_message(text, chat_id):
+    text = urllib.parse.quote_plus(text)
+    url = URL + "sendMessage?text={}&chat_id={}".format(text, chat_id)
+    get_url(url)
+
+
+def main():
+    last_update_id = None
+    while True:
+        updates = get_updates(last_update_id)
+        if len(updates["result"]) > 0:
+            last_update_id = get_last_update_id(updates) + 1
+            echo_all(updates)
+        time.sleep(0.5)
+
+
+if __name__ == '__main__':
+    main()

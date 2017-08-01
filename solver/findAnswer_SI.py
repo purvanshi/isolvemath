@@ -197,4 +197,6 @@ def moreMoney(dep,doc,pattern,unknown,rate,time):
 			principal=amount-interest
 			answer=SIformula.find_rate(principal,time,interest)
 			print(answer)
+	if 'answer' not in locals():
+		answer = "No small talk just ask, a simple interest question." # nope
 	return answer
