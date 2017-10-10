@@ -51,6 +51,8 @@ Each basic word problem can be classified into subcategories. For example, SI pr
   1. Finding a quantity when three others are given. 
   2. Investment of parts (example - splitting investment into two parts, and finding the cumulative interest after a year). This also includes profit sharing.
   
+  ![Alt text](/working.png "Working")
+  
 
 **Current Work and research**
 =========================
