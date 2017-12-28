@@ -32,13 +32,10 @@ RUN USING
 gunicorn -b 0.0.0.0:5000 main:app —reload
 
 
-**Inspiration**
-===========
-A student begins to solve Word Problems in the second grade, and these problems continue till the end of high school. Most students are unable to visualise such problems, and rely on rote learning instead.Finally developing a hatered towards the subject. 
-
-
 **Approach**
 ========
+You can check the system which solves simple arithmetic problems https://github.com/purvanshi/operation-prediction
+
 The system at present solves starightforward simple interest problems like-
 
 - How much time will it take for an amount of $900 to yield $81 as interest at 4.5% per annum of simple interest?
@@ -57,7 +54,8 @@ Each basic word problem can be classified into subcategories. For example, SI pr
 
 **Current Work and research**
 =========================
-The code at present is highly domain specific. To make it more generic, we have decided to solve word problems from basic. At present we are working on 4 basic operation problems(single and multistep). For better accuracies we will use deep neural networks to train our data.
+We have worked on the arithmetic word problem solver http://www.aclweb.org/anthology/I17-3017
+The code at present is highly domain specific. To make it more generic, we would be using deep learning and semantic graph formation technique to solve a wide variety of problems.
 
 
 **Who can contribute**
@@ -79,10 +77,5 @@ The following alternatives already exist, but they perform to a limited capacity
 
   The only problem with using WolframAlpha as a natural language parser (rather than a computational engine) is the maximum *complexity* of the word problems that the site can handle, which is depressingly low. 
 
-- `Euclid <http://euclid.allenai.org/>`_: Euclid is one of the products of the Allen Institute of Artificial Intelligence (AI2), which was established by Microsoft co-founder Paul Allen in 2013 to further AI. It aims to solve SAT-style Math questions. (for example, "What is x, if x plus three is 10?"). 
+- `Euclid <http://euclid.allenai.org/>`_: Euclid is one of the products of the Allen Institute of Artificial Intelligence (AI2),  It aims to solve SAT-style Math questions. (for example, "What is x, if x plus three is 10?"
 
-  The thing that drags Euclid down is the sheer *perfection* expected from the user - sentences with small amounts of redundancy or ambiguity are instantly rejected. Sentences which have information that is not directly handed over to the user are also rejected.
-
-  For example, consider the question "Each pencil costs $9.00. How much do 4 pencils cost?". Euclid is not able to parse such short questions, since it is cannot extract the unknown quantity (which is the cost) and a fact (which is the number of pencils) from the same sentence. Euclid expects the question to have been something like this "Each pencil costs $9. 4 pencils were brought. What is the total cost?"
-
-- Online material - This is a double-edged sword. On one hand, you have seemingly *humongous* amounts of information, so large that you cannot even begin to comprehend it. On the other hand, the sheer information available at your fingertips is daunting - you don't know where to start or end, you don't know which site to trust (web security is a real concern), and the content is often hidden behind paywalls.
