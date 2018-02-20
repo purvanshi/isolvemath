@@ -57,6 +57,10 @@ Each basic word problem can be classified into subcategories. For example, SI pr
 We have worked on the arithmetic word problem solver http://www.aclweb.org/anthology/I17-3017
 The code at present is highly domain specific. To make it more generic, we would be using deep learning and semantic graph formation technique to solve a wide variety of problems.
 
+**Contributors**
+=========================
+Purvanshi Mehta, Vinayak Athavale, Pruthwik Mishra
+Demo and working - Siddharth Khanooja, Himanshi Mehta
 
 **Who can contribute**
 ==================
